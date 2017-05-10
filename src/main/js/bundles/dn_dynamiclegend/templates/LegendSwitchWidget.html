@@ -1,0 +1,16 @@
+<div>
+    <div class="switchContainer">
+        <div class="switchLabel inner">${i18n.ui.switchButtonLabel}</div>
+        <div data-dojo-type="dijit/form/CheckBox"
+             data-dojo-attach-point="switchCheckBox"
+             data-dojo-attach-event="onChange:_onSwitchChange"
+             data-dojo-props="'class':'checkBox inner',checked:false,iconClass:'dijitCheckBoxIcon'">
+        </div>
+    </div>
+    <!--<div data-dojo-type="dijit/form/ToggleButton"
+         data-dojo-attach-point="switchToggleButton"
+         data-dojo-attach-event="onChange:_onSwitchChange"
+         data-dojo-props="'class':'switchButton',showLabel:true,checked:false,iconClass:'dijitCheckBoxIcon'">
+        ${i18n.ui.switchButtonLabel}
+    </div>-->
+</div>

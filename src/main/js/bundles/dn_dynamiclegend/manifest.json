@@ -1,0 +1,97 @@
+{
+  "Bundle-SymbolicName": "dn_dynamiclegend",
+  "Bundle-Version": "1.0.0-SNAPSHOT",
+  "Bundle-Name": "${bundleName}",
+  "Bundle-Description": "${bundleDescription}",
+  "Bundle-Vendor": "con terra GmbH",
+  "Bundle-Category": [
+    "mapping"
+  ],
+  "Bundle-Icon": {},
+  "Bundle-License": {},
+  "Require-Bundle": [
+    {
+      "name": "map",
+      "version": "^3.2.1"
+    },
+    {
+      "name": "coordinatetransformer",
+      "version": "^3.2.1"
+    }
+  ],
+  "CSS-Themes-Extension": [
+    {
+      "name": "*",
+      "files": [
+        "./styles/style.css"
+      ]
+    }
+  ],
+  "Components": [
+    {
+      "name": "Legend",
+      "impl": "LegendFactory",
+      "provides": [
+        "dn_dynamiclegend.Legend",
+        "dijit.Widget"
+      ],
+      "instanceFactory": true,
+      "properties": {
+        // Anchor name to use in a template
+        "widgetRole": "legend",
+        "showDynamicLegend": false,
+        "legendOpts": {
+          // legend aligned to the left (if 'false' alignment is right)
+          "alignmentLeft": true,
+          // will update with every scale change and displays only the layers and sub layers that are visible in the current map scale
+          "respectCurrentMapScale": true,
+          // if false, baselayer information is not shown in the legend, but a message like "no legend available" is displayed
+          "showBaseLayer": false
+        }
+      },
+      "references": [
+        {
+          "name": "_esriMap",
+          "providing": "esri.Map"
+        },
+        {
+          "name": "_mapState",
+          "providing": "ct.mapping.map.MapState"
+        },
+        {
+          "name": "_mapModel",
+          "providing": "ct.mapping.map.MapModel"
+        },
+        {
+          "name": "_coordinateTransformer",
+          "providing": "ct.api.coordinatetransformer.CoordinateTransformer"
+        },
+        {
+          "name": "_legendToggleTool",
+          "providing": "ct.tools.Tool",
+          "filter": "(id=legendToggleTool)",
+          "cardinality": "0..1"
+        }
+      ]
+    },
+    {
+      "name": "LegendToggleTool",
+      "impl": "ct/tools/Tool",
+      "provides": [
+        "ct.tools.Tool"
+      ],
+      "propertiesConstructor": true,
+      "properties": {
+        "id": "legendToggleTool",
+        "title": "${tool.title}",
+        "tooltip": "${tool.tooltip}",
+        "iconClass": "icon-legend",
+        "toolRole": "toolset",
+        "togglable": true,
+        "rules": {
+          "noGroup": true
+        }
+      }
+    }
+  ]
+}

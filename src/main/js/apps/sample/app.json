@@ -1,0 +1,591 @@
+{
+  "properties": {
+    "title": "Dynamic Legend Sample",
+    "amdPackages": "apprt@^3.2.1"
+  },
+  "load": {
+    "bundleLocations": [
+      "localbundles",
+      "bundles"
+    ],
+    "allowedBundles": [
+      "system@^3.2.1",
+      "splashscreen@^3.2.1",
+      "map@^3.2.1",
+      "themes@^3.2.1",
+      "templates@^3.2.1",
+      "templatelayout@^3.2.1",
+      "windowmanager@^3.2.1",
+      "toolset@^3.2.1",
+      "toolrules@^3.2.1",
+      "basemaptoggler@^3.2.1",
+      "banner@^3.2.1",
+      "bookmarks@^3.2.1",
+      "dn_dynamiclegend"
+    ],
+    "skipBundles": []
+  },
+  "bundles": {
+    "dn_dynamiclegend": {
+      "Legend": {
+        "showDynamicLegend": true,
+        "legendOpts": {
+          // legend aligned to the left (if 'false' alignment is right)
+          "alignmentLeft": true,
+          // will update with every scale change and displays only the layers and sub layers that are visible in the current map scale
+          "respectCurrentMapScale": true,
+          // if false, baselayer information is not shown in the legend, but a message like "no legend available" is displayed
+          "showBaseLayer": false
+        }
+      }
+    },
+    "banner": {
+      "BannerWidget": {
+        "label": "Developer Network",
+        "image": "https://www.conterra.de/~/media/conterra/images/site_logos/conterra-logo.ashx",
+        "imagePosition": "above",
+        "link": "http://developernetwork.conterra.de"
+      }
+    },
+    "bookmarks": {
+      "BookmarksTool": {
+        "activateOnStartup": true
+      },
+      "BookmarksFactory": {
+        "storageName": "mapapps_mapmarks",
+        "bookmarksOpts": {
+          "editable": false
+        },
+        "predefinedBookmarks": [
+          {
+            "extent": {
+              "spatialReference": {
+                "wkid": 3857
+              },
+              "xmin": -1100000,
+              "ymin": 4000000,
+              "xmax": 3500000,
+              "ymax": 8800000
+            },
+            "name": "Europa"
+          },
+          {
+            "extent": {
+              "spatialReference": {
+                "wkid": 3857
+              },
+              "xmax": 1496693.8378258524,
+              "xmin": 1478348.9510374349,
+              "ymax": 6897762.846253295,
+              "ymin": 6888141.3353179125
+            },
+            "name": "Berlin"
+          },
+          {
+            "extent": {
+              "spatialReference": {
+                "wkid": 3857
+              },
+              "xmax": 857252.0452677798,
+              "xmin": 820562.2716909437,
+              "ymax": 7132974.501730588,
+              "ymin": 7113731.479859821
+            },
+            "name": "Langeoog"
+          },
+          {
+            "extent": {
+              "spatialReference": {
+                "wkid": 3857
+              },
+              "xmax": 923940.0901450579,
+              "xmin": 905595.2033566403,
+              "ymax": 6171241.415493864,
+              "ymin": 6161619.904558481
+            },
+            "name": "Schwarzwald"
+          }
+        ]
+      }
+    },
+    "map": {
+      "MapModelFactory": {
+        "_configData": {
+          "maps": [
+            {
+              "id": "default",
+              "glass_pane": [],
+              "operationalLayer": [
+                {
+                  "title": "Corine Land Cover 2006",
+                  "enabled": true,
+                  "service": "service_88819",
+                  "category": {
+                    "title": "Corine Land Cover 2006",
+                    "description": "One of the major tasks undertaken in the framework of the Corine programme has been the establishment of a computerised inventory on the land cover.\nData on land cover is necessary for the environment policy as well as for other policies such as regional development and agriculture.\nAt the same time it provides one of the basic inputs for the production of more complex information on other themes (soil erosion, pollutant emission into the air by the vegetation, etc.). The objectives of the land cover project are: - to provide those responsible for and interested in the European policy on the environment with quantitative data on land cover, consistent and comparable across Europe; - to prepare one comprehensive land cover database for the 15 EC Member States and other European and North African countries, at an original scale of 1: 100 000, using 44 classes of the 3-level Corine nomenclature. \n",
+                    "imgUrl": ""
+                  },
+                  "layers": [
+                    "*"
+                  ],
+                  "id": "service_88819_1492602547495",
+                  "opacity": 0.5
+                }
+              ],
+              "baseLayer": [
+                {
+                  "title": "Streets",
+                  "service": "streets",
+                  "enabled": true,
+                  "category": {
+                    "title": "streets",
+                    "description": "",
+                    "imgUrl": ""
+                  },
+                  "children": [],
+                  "id": "streets_1492602517511"
+                },
+                {
+                  "title": "Topo",
+                  "service": "worldTopo",
+                  "enabled": false,
+                  "category": {
+                    "title": "worldTopo",
+                    "description": "",
+                    "imgUrl": ""
+                  },
+                  "children": [],
+                  "id": "worldTopo_1492602517511"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "MapState": {
+        "initialExtent": {
+          "xmin": -1100000,
+          "ymin": 4000000,
+          "xmax": 3500000,
+          "ymax": 8800000,
+          "spatialReference": {
+            "wkid": 3857
+          }
+        }
+      },
+      "MappingResourceRegistryFactory": {
+        "_knownServices": {
+          "services": [
+            {
+              "id": "worldTopo",
+              "type": "AGS_TILED",
+              "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
+            },
+            {
+              "id": "streets",
+              "type": "AGS_TILED",
+              "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
+            },
+            {
+              "id": "service_88819",
+              "url": "http://discomap.eea.europa.eu/arcgis/rest/services/Land/Corine_Land_Cover_WM/MapServer",
+              "type": "AGS_DYNAMIC",
+              "title": "Corine Land Cover 2006",
+              "description": "One of the major tasks undertaken in the framework of the Corine programme has been the establishment of a computerised inventory on the land cover.\nData on land cover is necessary for the environment policy as well as for other policies such as regional development and agriculture.\nAt the same time it provides one of the basic inputs for the production of more complex information on other themes (soil erosion, pollutant emission into the air by the vegetation, etc.). The objectives of the land cover project are: - to provide those responsible for and interested in the European policy on the environment with quantitative data on land cover, consistent and comparable across Europe; - to prepare one comprehensive land cover database for the 15 EC Member States and other European and North African countries, at an original scale of 1: 100 000, using 44 classes of the 3-level Corine nomenclature. \n",
+              "layers": [
+                {
+                  "id": "0",
+                  "title": "Land Cover",
+                  "enabled": true
+                },
+                {
+                  "id": "1",
+                  "title": "Corine Land Cover 2006",
+                  "parentId": "0",
+                  "enabled": true
+                },
+                {
+                  "id": "2",
+                  "title": "Artificial Surfaces",
+                  "parentId": "1",
+                  "enabled": true
+                },
+                {
+                  "id": "3",
+                  "title": "Artificial Surfaces (raster)",
+                  "parentId": "2",
+                  "maxScale": 800000,
+                  "enabled": true
+                },
+                {
+                  "id": "4",
+                  "title": "Artificial Surfaces (vector)",
+                  "parentId": "2",
+                  "minScale": 799999,
+                  "enabled": true
+                },
+                {
+                  "id": "5",
+                  "title": "Agricultural Areas",
+                  "parentId": "1",
+                  "enabled": true
+                },
+                {
+                  "id": "6",
+                  "title": "Agricultural Areas (raster)",
+                  "parentId": "5",
+                  "maxScale": 800000,
+                  "enabled": true
+                },
+                {
+                  "id": "7",
+                  "title": "Agricultural Areas (vector)",
+                  "parentId": "5",
+                  "minScale": 799999,
+                  "enabled": true
+                },
+                {
+                  "id": "8",
+                  "title": "Forest Semi Natural Areas",
+                  "parentId": "1",
+                  "enabled": true
+                },
+                {
+                  "id": "9",
+                  "title": "Forest Semi Natural Areas (raster)",
+                  "parentId": "8",
+                  "maxScale": 800000,
+                  "enabled": true
+                },
+                {
+                  "id": "10",
+                  "title": "Forest Semi Natural Areas (vector)",
+                  "parentId": "8",
+                  "minScale": 799999,
+                  "enabled": true
+                },
+                {
+                  "id": "11",
+                  "title": "Wetlands",
+                  "parentId": "1",
+                  "enabled": true
+                },
+                {
+                  "id": "12",
+                  "title": "Wetlands (raster)",
+                  "parentId": "11",
+                  "maxScale": 800000,
+                  "enabled": true
+                },
+                {
+                  "id": "13",
+                  "title": "Wetlands (vector)",
+                  "parentId": "11",
+                  "minScale": 799999,
+                  "enabled": true
+                },
+                {
+                  "id": "14",
+                  "title": "Waterbodies",
+                  "parentId": "1",
+                  "enabled": true
+                },
+                {
+                  "id": "15",
+                  "title": "Waterbodies (raster)",
+                  "parentId": "14",
+                  "maxScale": 800000,
+                  "enabled": true
+                },
+                {
+                  "id": "16",
+                  "title": "WaterBodies (vector)",
+                  "parentId": "14",
+                  "minScale": 799999,
+                  "enabled": true
+                },
+                {
+                  "id": "17",
+                  "title": "Corine Land Cover 2000",
+                  "parentId": "0",
+                  "enabled": false
+                },
+                {
+                  "id": "18",
+                  "title": "Artificial Surfaces",
+                  "parentId": "17",
+                  "enabled": true
+                },
+                {
+                  "id": "19",
+                  "title": "Artificial Surfaces (raster)",
+                  "parentId": "18",
+                  "maxScale": 800000,
+                  "enabled": true
+                },
+                {
+                  "id": "20",
+                  "title": "Artificial Surfaces (vector)",
+                  "parentId": "18",
+                  "minScale": 799999,
+                  "enabled": true
+                },
+                {
+                  "id": "21",
+                  "title": "Agricultural Areas",
+                  "parentId": "17",
+                  "enabled": true
+                },
+                {
+                  "id": "22",
+                  "title": "Agricultural Areas (raster)",
+                  "parentId": "21",
+                  "maxScale": 800000,
+                  "enabled": true
+                },
+                {
+                  "id": "23",
+                  "title": "Agricultural Areas (vector)",
+                  "parentId": "21",
+                  "minScale": 799999,
+                  "enabled": true
+                },
+                {
+                  "id": "24",
+                  "title": "Forest Semi Natural Areas",
+                  "parentId": "17",
+                  "enabled": true
+                },
+                {
+                  "id": "25",
+                  "title": "Forest Semi Natural Areas (raster)",
+                  "parentId": "24",
+                  "maxScale": 800000,
+                  "enabled": true
+                },
+                {
+                  "id": "26",
+                  "title": "Forest Semi Natural Areas (vector)",
+                  "parentId": "24",
+                  "minScale": 799999,
+                  "enabled": true
+                },
+                {
+                  "id": "27",
+                  "title": "Wetlands",
+                  "parentId": "17",
+                  "enabled": true
+                },
+                {
+                  "id": "28",
+                  "title": "Wetlands (raster)",
+                  "parentId": "27",
+                  "maxScale": 800000,
+                  "enabled": true
+                },
+                {
+                  "id": "29",
+                  "title": "Wetlands (vector)",
+                  "parentId": "27",
+                  "minScale": 799999,
+                  "enabled": true
+                },
+                {
+                  "id": "30",
+                  "title": "Waterbodies",
+                  "parentId": "17",
+                  "enabled": true
+                },
+                {
+                  "id": "31",
+                  "title": "Waterbodies (raster)",
+                  "parentId": "30",
+                  "maxScale": 800000,
+                  "enabled": true
+                },
+                {
+                  "id": "32",
+                  "title": "WaterBodies (vector)",
+                  "parentId": "30",
+                  "minScale": 799999,
+                  "enabled": true
+                },
+                {
+                  "id": "33",
+                  "title": "Corine Land Cover 1990",
+                  "parentId": "0",
+                  "enabled": false
+                },
+                {
+                  "id": "34",
+                  "title": "Artificial Surfaces",
+                  "parentId": "33",
+                  "enabled": true
+                },
+                {
+                  "id": "35",
+                  "title": "Artificial Surfaces (raster)",
+                  "parentId": "34",
+                  "maxScale": 800000,
+                  "enabled": true
+                },
+                {
+                  "id": "36",
+                  "title": "Artificial Surfaces (vector)",
+                  "parentId": "34",
+                  "minScale": 799999,
+                  "enabled": true
+                },
+                {
+                  "id": "37",
+                  "title": "Agricultural Areas",
+                  "parentId": "33",
+                  "enabled": true
+                },
+                {
+                  "id": "38",
+                  "title": "Agricultural Areas (raster)",
+                  "parentId": "37",
+                  "maxScale": 800000,
+                  "enabled": true
+                },
+                {
+                  "id": "39",
+                  "title": "Agricultural Areas (vector)",
+                  "parentId": "37",
+                  "minScale": 799999,
+                  "enabled": true
+                },
+                {
+                  "id": "40",
+                  "title": "Forest Semi Natural Areas",
+                  "parentId": "33",
+                  "enabled": true
+                },
+                {
+                  "id": "41",
+                  "title": "Forest Semi Natural Areas (raster)",
+                  "parentId": "40",
+                  "maxScale": 800000,
+                  "enabled": true
+                },
+                {
+                  "id": "42",
+                  "title": "Forest Semi Natural Areas (vector)",
+                  "parentId": "40",
+                  "minScale": 799999,
+                  "enabled": true
+                },
+                {
+                  "id": "43",
+                  "title": "Wetlands",
+                  "parentId": "33",
+                  "enabled": true
+                },
+                {
+                  "id": "44",
+                  "title": "Wetlands (raster)",
+                  "parentId": "43",
+                  "maxScale": 800000,
+                  "enabled": true
+                },
+                {
+                  "id": "45",
+                  "title": "Wetlands (vector)",
+                  "parentId": "43",
+                  "minScale": 799999,
+                  "enabled": true
+                },
+                {
+                  "id": "46",
+                  "title": "Waterbodies",
+                  "parentId": "33",
+                  "enabled": true
+                },
+                {
+                  "id": "47",
+                  "title": "Waterbodies (raster)",
+                  "parentId": "46",
+                  "maxScale": 800000,
+                  "enabled": true
+                },
+                {
+                  "id": "48",
+                  "title": "Waterbodies (vector)",
+                  "parentId": "46",
+                  "minScale": 799999,
+                  "enabled": true
+                }
+              ],
+              "options": {}
+            }
+          ]
+        }
+      }
+    },
+    "templates": {
+      "TemplateModel": {
+        "_selectedTemplate": "seasons",
+        "_templates": [
+          {
+            "name": "seasons",
+            "widgets": [
+              {
+                "widgetRole": "legend",
+                "window": {
+                  "marginBox": {
+                    "l": 20,
+                    "b": 50,
+                    "w": 400,
+                    "h": 620
+                  }
+                }
+              },
+              {
+                "widgetRole": "bookmarkstoolbar",
+                "window": {
+                  "marginBox": {
+                    "l": 20,
+                    "b": 700,
+                    "h": 100
+                  },
+                  "closable": false
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "TemplateSelector": {
+        "componentEnabled": false
+      }
+    },
+    "toolrules": {
+      "ToolActiveStateManager": {
+        "activateOnStartToolIds": [
+          "legendToggleTool"
+        ]
+      }
+    },
+    "toolset": {
+      "ToolsetManager": {
+        "toolsets": [
+          {
+            "id": "toolset_1492601860048",
+            "title": "Unbenannt",
+            "container": "map",
+            "window": {
+              "closable": true
+            },
+            "position": {
+              "rel_l": 0,
+              "rel_t": 0
+            },
+            "tools": []
+          }
+        ]
+      }
+    }
+  }
+}
+
