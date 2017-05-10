@@ -7,8 +7,7 @@
   "Bundle-Category": [
     "mapping"
   ],
-  "Bundle-Icon": {},
-  "Bundle-License": {},
+  "Product-Name": "devnet-mapapps-dynamic-legend",
   "Require-Bundle": [
     {
       "name": "map",
