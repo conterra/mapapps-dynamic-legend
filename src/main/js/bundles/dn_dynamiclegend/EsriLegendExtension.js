@@ -60,8 +60,12 @@ define([
                 }
                 else if (layer.visible === !0) {
                     var layerId = layer.id;
-                    var layerLegendNode = createDomNode("div", {id: id + "_" + layerId, style: "display: none;", "class": "esriLegendService"}, this.domNode, "first");
-                    if ("esri.layers.WMSLayer" == declaredClass) {
+                    var layerLegendNode = createDomNode("div", {
+                        id: id + "_" + layerId,
+                        style: "display: none;",
+                        "class": "esriLegendService"
+                    }, this.domNode, "first");
+                    if ("esri.layers.WMSLayer" === declaredClass) {
                         d_domClass.add(layerLegendNode, "lfuLegendWMSLayer");
                         //patched
                         hasWMSLegede = this._createLegendForWMSLayer(layerLegendNode, layer);
@@ -73,7 +77,7 @@ define([
                             d_domStyle.set(layerLegendNode, "display", "block");
                         }
                     }
-                    else if (layer.layerInfos || layer.renderer || "esri.layers.ArcGISImageServiceLayer" == declaredClass) {
+                    else if (layer.layerInfos || layer.renderer || "esri.layers.ArcGISImageServiceLayer" === declaredClass) {
                         //patched
                         this._createServiceLabelNode(layerLegendNode.parentNode || this.domNode, this._getServiceTitle(layer));
                         layer.legendResponse || layer.renderer ? this._createLegendForLayer(layer) : legendRequests.push(this._legendRequest(layer))
@@ -114,7 +118,13 @@ define([
                         var tbody = this._createLegendLayerTbodyNode(parent, layer, layerInfo);
                         var imgTdNode = createDomNode("td", {}, createDomNode("tr", {}, tbody));
 
-                        var imgNode = createDomNode("img", {src: apprt_request.getProxiedUrl(legendURL), title: legendImgTitle, border: 0, style: "opacity:" + layer.opacity, "class": "lfuLegendImg"}, imgTdNode);
+                        var imgNode = createDomNode("img", {
+                            src: apprt_request.getProxiedUrl(legendURL),
+                            title: legendImgTitle,
+                            border: 0,
+                            style: "opacity:" + layer.opacity,
+                            "class": "lfuLegendImg"
+                        }, imgTdNode);
                         if (9 > has("ie")) {
                             d_domStyle.set(imgNode, "filter", "alpha(opacity\x3d" + 100 * layer.opacity + ")");
                         }
@@ -134,7 +144,7 @@ define([
             var legendLayerNodeId = legendNodeId + "_" + layerInfo.id;
 
             var hasLegende = !1;
-            var notParentLayer = parentLayerId == -1;
+            var notParentLayer = parentLayerId === -1;
             var layerLegendNode = notParentLayer ? getDomNodeById(legendNodeId) : getDomNodeById(legendNodeId + "_" + parentLayerId + "_group");
 
             var layerLabelParentNode = null;
@@ -147,8 +157,7 @@ define([
                     layerLegendNode);
 
                 this._createLayerLabelNode(layerLabelParentNode, layerInfo.name);
-            }
-            else if ((!this._respectVisibility || !layer.visibleLayers || -1 != ("," + layer.visibleLayers + ",").indexOf("," + layerInfo.id + ",")) && !this._isExcludeLayer(layerInfo) && this._showAtItemCount(layerInfo)) {
+            } else if ((!this._respectVisibility || !layer.visibleLayers || -1 !== ("," + layer.visibleLayers + ",").indexOf("," + layerInfo.id + ",")) && !this._isExcludeLayer(layerInfo) && this._showAtItemCount(layerInfo)) {
                 layerLabelParentNode = createDomNode("div", {
                         id: legendLayerNodeId,
                         "class": notParentLayer ? "" : this._legendAlign
@@ -178,8 +187,8 @@ define([
             var scale = this.map.getScale(), hasLegend = !1, _getLegendResponseLayer = function (a, b) {
                 var c, d;
                 for (c = 0; c < a.length; c++)if (b.dynamicLayerInfos)for (d = 0; d < b.dynamicLayerInfos[d].length; d++) {
-                    if (b.dynamicLayerInfos[d].mapLayerId == a[c].layerId)return a[c]
-                } else if (b.id == a[c].layerId)return a[c];
+                    if (b.dynamicLayerInfos[d].mapLayerId === a[c].layerId)return a[c]
+                } else if (b.id === a[c].layerId)return a[c];
                 return {}
             };
             if (!this._respectCurrentMapScale || this._isLayerInScale(layer, layerInfo, scale)) {
@@ -190,7 +199,8 @@ define([
                     if (n.minScale && n.minScale < scale || n.maxScale && n.maxScale > scale) u = !1
                 }
                 if (u) {
-                    var legendResponseLayer = _getLegendResponseLayer(layer.legendResponse.layers, layerInfo), legendType = legendResponseLayer.legendType, l = legendResponseLayer.legend;
+                    var legendResponseLayer = _getLegendResponseLayer(layer.legendResponse.layers, layerInfo),
+                        legendType = legendResponseLayer.legendType, l = legendResponseLayer.legend;
                     if (l) {
                         "esri.layers.ArcGISImageServiceLayer" !== declaredClass && this._sanitizeLegendResponse(layer, legendResponseLayer, layerInfo);
 
@@ -257,7 +267,7 @@ define([
             var label = d_entities.encode(legendResponseItem.label);
             var type = legendResponseItem.type;
             var imgNode, txtNode;
-            if (!type || type == "img") {
+            if (!type || type === "img") {
                 var declaredClass = layer.declaredClass;
                 if ((!has("ie") || 9 <= has("ie") || 9 > has("ie") && "esri.layers.ArcGISImageServiceLayer" === declaredClass) && legendResponseItem.imageData && 0 < legendResponseItem.imageData.length) {
                     imgUrl = "data:image/png;base64," + legendResponseItem.imageData;
@@ -281,9 +291,12 @@ define([
             }
             else {
                 //patched
-                imgNode = createDomNode("span", {border: 0, "class": "lfuLegendLink icon-arrow-double-right"}, imgTdNode);
+                imgNode = createDomNode("span", {
+                    border: 0,
+                    "class": "lfuLegendLink icon-arrow-double-right"
+                }, imgTdNode);
                 txtNode = this._createTdNode(labelTdNode, "", "", {dir: "ltr"});
-                if (type == "label") {
+                if (type === "label") {
                     //createDomNode("span", {innerHTML: d_entities.encode(legendResponseItem.layerName) + "<br>", "class": "lfuLegendLayerLabel"}, txtNode);
                     createDomNode("span", {innerHTML: label, "class": "lfuLegendLayerLabel"}, txtNode);
                 }
@@ -349,8 +362,8 @@ define([
         _buildLegendItems_Config: function (layer, layerInfo, parent, isStaticLegend) {
             var tbody = null;
             var legendItems = this._getLegendItemsAtCurrentScale(layerInfo, true, isStaticLegend);
-            var hasLegende = legendItems.length > 0;
-            hasLegende && d_array.forEach(legendItems, function (item) {
+            var hasLegend = legendItems.length > 0;
+            hasLegend && d_array.forEach(legendItems, function (item) {
                 var legendResponseItem = {
                     url: item.url,
                     type: item.type,
@@ -361,12 +374,17 @@ define([
                 this._buildRow_Tools(legendResponseItem, tbody, layer, layerInfo.id);
             }, this);
 
-            this._dynamicWarning = hasLegende && this._isDynamicLegend() && (isStaticLegend || !this._hasDynamicLegend(layerInfo));
-            return hasLegende;
+            this._dynamicWarning = hasLegend && this._isDynamicLegend() && (isStaticLegend || !this._hasDynamicLegend(layerInfo));
+            return hasLegend;
         },
 
         _createLegendLayerTbodyNode: function (parent, layer, layerInfo) {
-            var tableNode = createDomNode("table", {cellpadding: 0, cellspacing: 0, width: "98%", "class": "esriLegendLayer lfuLegendLayer"}, parent);
+            var tableNode = createDomNode("table", {
+                cellpadding: 0,
+                cellspacing: 0,
+                width: "98%",
+                "class": "esriLegendLayer lfuLegendLayer"
+            }, parent);
             var tbodyNode = createDomNode("tbody", {}, tableNode);
             (layer._hoverLabel || layer._hoverLabels) && this._createHoverAction(tableNode, layer, layerInfo);
             return tbodyNode;
@@ -374,7 +392,10 @@ define([
 
         _createTdNode: function (parent, tdInnerHTML, tableClass, tableAttr, position) {
             var attr = d_lang.mixin({"class": tableClass, width: "98%"}, tableAttr || {});
-            return createDomNode("td", {align: this._align, innerHTML: tdInnerHTML || ""}, createDomNode("tr", {}, createDomNode("tbody", {}, createDomNode("table", attr, parent, position))));
+            return createDomNode("td", {
+                align: this._align,
+                innerHTML: tdInnerHTML || ""
+            }, createDomNode("tr", {}, createDomNode("tbody", {}, createDomNode("table", attr, parent, position))));
         },
 
         _createServiceLabelNode: function (parent, innerHTML) {
@@ -396,9 +417,9 @@ define([
             d_array.forEach(this.layers, function (layer) {
                 if (!this._isDynamicLegend() || this._hasItemInExtent(layer)) {
                     var declaredClass = layer.declaredClass;
-                    if ("esri.layers.WMSLayer" == declaredClass || "esri.layers.KMLLayer" == declaredClass || "esri.layers.GeoRSSLayer" == declaredClass) {
+                    if ("esri.layers.WMSLayer" === declaredClass || "esri.layers.KMLLayer" === declaredClass || "esri.layers.GeoRSSLayer" === declaredClass) {
                         if (layer.loaded) {
-                            if ("esri.layers.WMSLayer" == declaredClass) {
+                            if ("esri.layers.WMSLayer" === declaredClass) {
                                 var hasLegendURL = layer.visible && d_array.some(layer.layerInfos, function (layerInfo) {
                                         return layerInfo.legendURL;
                                     });
@@ -406,16 +427,16 @@ define([
                                 hasLegendURL && showInLegendLayers.push(layer);
                             }
                             else {
-                                var featureLayers = ("esri.layers.KMLLayer" == declaredClass) ? layer.getLayers() : layer.getFeatureLayers();
+                                var featureLayers = ("esri.layers.KMLLayer" === declaredClass) ? layer.getLayers() : layer.getFeatureLayers();
                                 var hideLayersInLegend = layer._hideLayersInLegend;
                                 if (hideLayersInLegend) {
                                     featureLayers = d_array.filter(featureLayers, function (featureLayer) {
-                                        return -1 == d_array.indexOf(hideLayersInLegend, featureLayer.id)
+                                        return -1 === d_array.indexOf(hideLayersInLegend, featureLayer.id)
                                     })
                                 }
 
                                 d_array.forEach(featureLayers, function (featureLayer) {
-                                    if ("esri.layers.FeatureLayer" == featureLayer.declaredClass && layer._titleForLegend) {
+                                    if ("esri.layers.FeatureLayer" === featureLayer.declaredClass && layer._titleForLegend) {
                                         var title = "";
                                         switch (featureLayer.geometryType) {
                                             case "esriGeometryPoint":

@@ -17,7 +17,7 @@ define(({
     bundleName: "Dynamic Legend",
     bundleDescription: "Dieses Bundle erweitert die Esri Legende und macht diese dynamisch.",
     ui: {
-        "noDynamicLegendAvailable": "Keine dynamische Legende verf\u00fcgbar",
+        "noDynamicLegendAvailable": "Keine dynamische Legende in diesem Ma\u00dfstabsbereich verf\u00fcgbar",
         "openExtraLink": "Legende in einem neuen Fenster \u00f6ffnen",
         "switchButtonLabel": "Legende nur f\u00fcr Kartenausschnitt anzeigen"
     },

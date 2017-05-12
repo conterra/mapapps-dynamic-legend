@@ -18,7 +18,7 @@ define({
         bundleName: "Dynamic Legend",
         bundleDescription: "This bundle extends the esri legend to make it dynamic.",
         ui: {
-            "noDynamicLegendAvailable": "No dynamic legend available",
+            "noDynamicLegendAvailable": "No dynamic legend available for this scale range",
             "openExtraLink": "Open legend in a new window",
             "switchButtonLabel": "only show legend in the current map extent"
         },
