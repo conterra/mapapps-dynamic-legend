@@ -293,7 +293,7 @@ define([
 
         _isArcGISLayer: function (layer) {
             var declaredClass = layer.declaredClass;
-            return "esri.layers.WMSLayer" != declaredClass && "esri.layers.KMLLayer" != declaredClass && "esri.layers.GeoRSSLayer" != declaredClass;
+            return "esri.layers.WMSLayer" !== declaredClass && "esri.layers.KMLLayer" !== declaredClass && "esri.layers.GeoRSSLayer" !== declaredClass;
         },
 
         _getArcGISLayers: function (layers) {
@@ -348,7 +348,7 @@ define([
                     spatialReference.wkid = spatialReference.latestWkid;
                     delete spatialReference.latestWkid;
                 }
-                extentIntersects = currentExtent.intersects(wkid == spatialReference.wkid ? extent : this.coordinateTransformer.transform(extent, wkid));
+                extentIntersects = currentExtent.intersects(wkid === spatialReference.wkid ? extent : this.coordinateTransformer.transform(extent, wkid));
             }
             return extentIntersects;
         },
