@@ -26,6 +26,34 @@
       ]
     }
   ],
+  "layout-widgets": [
+    {
+      "widgetRole": "dynamicLegend",
+      "window": {
+        "title": "${templates.seasons.legend.title}",
+        "dockable": true,
+        "dockingBar": "${id}-dockingBarBottomRight",
+        "dockTool": "dynamicLegendToggleTool",
+        "marginBox": {
+          "w": 255,
+          "h": 255,
+          "l": 25,
+          "b": 58
+        },
+        "minimizeOnClose": true,
+        "minSize": {
+          "w": 150,
+          "h": 150
+        },
+        "dndDraggable": true,
+        "windowClass": "ctWindowEffect"
+      },
+      "windowevents": {
+        "onShow": "show",
+        "onHide": "hide"
+      }
+    }
+  ],
   "Components": [
     {
       "name": "Legend",
@@ -37,7 +65,7 @@
       "instanceFactory": true,
       "properties": {
         // Anchor name to use in a template
-        "widgetRole": "legend",
+        "widgetRole": "dynamicLegend",
         "showDynamicLegend": false,
         "legendOpts": {
           // legend aligned to the left (if 'false' alignment is right)
@@ -66,9 +94,9 @@
           "providing": "ct.api.coordinatetransformer.CoordinateTransformer"
         },
         {
-          "name": "_legendToggleTool",
+          "name": "_dynamicLegendToggleTool",
           "providing": "ct.tools.Tool",
-          "filter": "(id=legendToggleTool)",
+          "filter": "(id=dynamicLegendToggleTool)",
           "cardinality": "0..1"
         }
       ]
@@ -81,7 +109,7 @@
       ],
       "propertiesConstructor": true,
       "properties": {
-        "id": "legendToggleTool",
+        "id": "dynamicLegendToggleTool",
         "title": "${tool.title}",
         "tooltip": "${tool.tooltip}",
         "iconClass": "icon-legend",

@@ -24,7 +24,7 @@ define(["dojo/_base/lang", "dojo/_base/declare", "./LegendUI"],
                     esriMap: this._esriMap,
                     mapState: this._mapState,
                     mapModel: this._mapModel,
-                    legendToggleTool: this._legendToggleTool,
+                    legendToggleTool: this._dynamicLegendToggleTool,
                     coordinateTransformer: this._coordinateTransformer
                 });
                 // create a new legend
