@@ -30,7 +30,7 @@
     {
       "widgetRole": "dynamicLegend",
       "window": {
-        "title": "${templates.seasons.legend.title}",
+        "title": "${bundleName}",
         "dockable": true,
         "dockingBar": "${id}-dockingBarBottomRight",
         "dockTool": "dynamicLegendToggleTool",
