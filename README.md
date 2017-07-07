@@ -7,7 +7,7 @@ http://www.mapapps.de/mapapps/resources/apps/downloads_dynamic_legend/index.html
 
 Installation Guide
 ------------------
-**Requirement: map.apps 3.2.1**
+**Requirement: map.apps 3.4.0**
 
 In order to use the "dn_dynamiclegend" bundle, simply add it to your app - no further configuration is required.
 
