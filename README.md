@@ -3,7 +3,7 @@ The Dynamic Legend bundle extends the esri legend to make it dynamic.
 
 Sample App
 ------------------
-http://www.mapapps.de/mapapps/resources/apps/downloads_dynamic_legend/index.html
+https://demos.conterra.de/mapapps/resources/apps/downloads_dynamic_legend/index.html
 
 Installation Guide
 ------------------
