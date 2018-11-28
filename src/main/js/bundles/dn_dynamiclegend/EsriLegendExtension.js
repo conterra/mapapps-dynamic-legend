@@ -44,7 +44,7 @@ define([
         _createLegend: function () {
             var id = this.id;
             d_domStyle.set(this.domNode, "position", "relative");
-            createDomNode("div", {id: id + "_msg", innerHTML: this.NLS_creatingLegend + "..."}, this.domNode);
+            var msgNode = createDomNode("div", {id: id + "_msg", innerHTML: this.NLS_creatingLegend + "..."}, this.domNode);
 
             var hasWMSLegede = !1;
             var legendRequests = [];
@@ -85,7 +85,6 @@ define([
                 }
             }, this);
 
-            var msgNode = getDomNodeById(id + "_msg");
             if (legendRequests.length === 0 && !hasWMSLegede) {
                 msgNode && (msgNode.innerHTML = this.NLS_noLegend);
                 this._activate();
