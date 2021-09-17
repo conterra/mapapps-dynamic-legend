@@ -1,10 +1,6 @@
 # Dynamic Legend Bundle
 The Dynamic Legend bundle extends the esri legend to make it dynamic.
 
-Sample App
-------------------
-https://demos.conterra.de/mapapps/resources/apps/downloads_dynamic_legend/index.html
-
 Installation Guide
 ------------------
 **Requirement: map.apps 3.4.0**
